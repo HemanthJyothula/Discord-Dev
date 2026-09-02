@@ -26,7 +26,7 @@ class MyCommands(commands.Cog):
     async def clearcommands(self, interaction: discord.Interaction):
         if not await self.bot.is_owner(interaction.user): await interaction.response.send_message("You are not authorized to use this command.",ephemeral=True); return
         guild = self.bot.guilds[0]
-        self.tree.clear_commands(guild=guild)
+        self.bot.tree.clear_commands(guild=guild)
         synced = await self.bot.tree.sync(guild=guild)
         await interaction.response.send_message("All global slash commands have been cleared.",ephemeral=True)
 

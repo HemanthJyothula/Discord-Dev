@@ -45,6 +45,8 @@ class Bot(commands.Bot):
                 raise
 
     async def on_ready(self) -> None:
+#        self.tree.clear_commands(guild=None)
+#        await self.tree.sync()
         for guild in self.guilds:
             self.tree.copy_global_to(guild=guild)
             synced = await self.tree.sync(guild=guild)
